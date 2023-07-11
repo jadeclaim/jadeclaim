@@ -1,0 +1,15 @@
+__pycache__
+.env
+.history
+.hypothesis/
+reports/
+build/
+.vscode/configurationCache.log
+.vscode/dryrun.log
+.vscode/targets.log
+**/scripts/snapshots/**/data
+.vscode
+tenderly.yaml
+slither*
+
+**/lb
