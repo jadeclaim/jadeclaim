@@ -3,8 +3,12 @@ dev_deployment_artifacts: true
 networks:
     networks:
         development:
-            explorer: "https://api.avax.network/ext/bc/C/rpc"
-    default: development
+            explorer: "https://api.bscscan.com/api"
+            host: "https://compatible-summer-fog.bsc.quiknode.pro/32facf57be73f6c1ac993db82fb25a7737eea3d0"
+        # bsc-main:
+        #     host: "https://compatible-summer-fog.bsc.quiknode.pro/32facf57be73f6c1ac993db82fb25a7737eea3d0"
+        default: development
+
 reports:
     exclude_contracts:
         - ERC20
@@ -30,10 +34,10 @@ compiler:
         optimizer:
             enabled: true
             runs: 999
-        remappings:  
+        remappings:
             - "@openzeppelinUpgradeable=OpenZeppelin/openzeppelin-contracts-upgradeable@4.4.2"
             - "@openzeppelin=OpenZeppelin/openzeppelin-contracts@4.4.2"
 dependencies:
-  - OpenZeppelin/openzeppelin-contracts@4.4.2
-  - OpenZeppelin/openzeppelin-contracts-upgradeable@4.4.2
+    - OpenZeppelin/openzeppelin-contracts@4.4.2
+    - OpenZeppelin/openzeppelin-contracts-upgradeable@4.4.2
 dotenv: .env

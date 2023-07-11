@@ -12,3 +12,8 @@ build/
 tenderly.yaml
 slither*
 
+./data
+
+venv
+
+contracts_deleted

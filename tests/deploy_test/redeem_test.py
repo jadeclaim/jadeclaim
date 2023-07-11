@@ -26,11 +26,20 @@ def test_redeem(
     initial_balance = fwd.balanceOf(client)
     redeem.redeemToken(amount, 0, client_params)
     assert initial_balance - fwd.balanceOf(client) == amount
+    assert fwd.balanceOf(redeem) == 0
     assert (
         usdc.balanceOf(client)
         == amount * redeem.tokenPriceInUsd() // 10**2 // 10**12
     )
     assert fwd.totalSupply() == prev_total_supply - amount
+
+
+def test_price_go_up(redeem_contract, deployer_params, fwd, usdc):
+    redeem = redeem_contract
+    redeem.setTokenPrice(3000, 2, deployer_params)
+    redeem.setTokenPrice(31000, 3, deployer_params)
+    with reverts("Price can no longer go down"):
+        redeem.setTokenPrice(3000, 2, deployer_params)
 
 
 def test_modify_price(redeem_contract, deployer_params, fwd, usdc):

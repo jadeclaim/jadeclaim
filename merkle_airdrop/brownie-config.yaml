@@ -1,0 +1,39 @@
+dev_deployment_artifacts: true
+
+networks:
+    networks:
+        development:
+            explorer: "https://api.avax.network/ext/bc/C/rpc"
+    default: development
+reports:
+    exclude_contracts:
+        - ERC20
+        - SafeERC20
+        - Address
+        - TransparentUpgradeableProxy
+        - ERC1967Upgrade
+        - Ownable
+        - OwnableUpgradeable
+        - MintableERC20
+        - PoolHelperFactoryLib
+        - ProxyAdmin
+        - ERC20FactoryLib
+        - VTX
+        - xPTP
+        - PoolHelper
+        - ComputeAPR
+        - MainStakingV2
+
+compiler:
+    solc:
+        version: 0.8.7
+        optimizer:
+            enabled: true
+            runs: 999
+        remappings:  
+            - "@openzeppelinUpgradeable=OpenZeppelin/openzeppelin-contracts-upgradeable@4.4.2"
+            - "@openzeppelin=OpenZeppelin/openzeppelin-contracts@4.4.2"
+dependencies:
+  - OpenZeppelin/openzeppelin-contracts@4.4.2
+  - OpenZeppelin/openzeppelin-contracts-upgradeable@4.4.2
+dotenv: .env

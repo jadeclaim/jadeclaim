@@ -36,15 +36,7 @@ def deployer_params(deployer):
 
 @pytest.fixture(scope="module", autouse=True)
 def redeem_contract(deployer_params, usdc, fwd):
-    redeem, proxy_admin = deploy_upgradeable_contract(
-        deployer_params,
-        Redeem,
-        "__Redeem_init",
-        None,
-        fwd,
-        usdc,
-        2093,
-    )
+    redeem = Redeem.deploy(fwd, usdc, 2093, deployer_params)
     return redeem
 
 
