@@ -9,11 +9,13 @@ The goal of the repository is to distribute the jade treasury to its recipients.
 
 ## Setup
 
-_Requires python3.9+, jupyter notebook, make, gcc_
+_Requires python3.9, make, gcc, (optional : jupyter notebook)_
 
 The Python requirements are detailed under the [requirement file](./requirements.txt)
 Create a new virtual environment (https://docs.python.org/3/library/venv.html)
 From a new env install those requirements by running the below. You might get an error with dateutils version, just ignore.
+The install can display some conflicts involving the package distutils. Just disregard it.
+
 ```
 pip install --upgrade pip
 pip install -r ./requirements.txt
@@ -29,15 +31,16 @@ with their respective API keys from each chain explorer. You can get free API Ke
 ### Warning
 
 Setting up the workspace for compilation takes space and time, and is unrelated to the data. If you are curious and would like more information, install OpenZeppelin 4.4.2 by using
+
 ```
 brownie pm install OpenZeppelin/openzeppelin-contracts@4.4.2
 ```
 
 The `contracts` folder is provided for transparency and is not required for goal #1. It is recommended to delete this if you are only interested in goal #1.
 
-
 The bsc default rpc behaves strangely sometimes. It is recommended to add a private archiving rpc and you can get one from www.quicknode.com.
 Afterwards, you can update the brownie config by running:
+
 ```
 brownie networks modify bsc-main host=<NEW URL>
 ```
@@ -50,15 +53,18 @@ From the root, getting the data is done with:
 make get_avax_data
 make get_bsc_data
 ```
+
 (note, running both of these will take 2 or more hours...)
 
-After completion, the data  will be in the `/data` folder.
+After completion, the data will be in the `/data` folder.
 
 Next we need to clean/parse all the irrelavant contracts. Do this by install tqdm and pandas
+
 ```
 pip install tqdm
 pip install pandas
 ```
+
 Then run ths scripts to do the parsing by running (IN ORDER!!):
 
 ```
